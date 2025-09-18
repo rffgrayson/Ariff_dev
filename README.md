@@ -7,3 +7,10 @@ Portfolio page
 -- has a question features about my expertise and when you choose it the pages will load into what the user wants.
 
   - if the user dont know, they can click a button to have summary.
+
+- sap
+- webdev + devops + cloud
+- ai ml? maybe. with math. and quant.
+- business
+- polyglot
+- fitness
