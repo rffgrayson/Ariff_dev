@@ -14,3 +14,4 @@ Portfolio page
 - business
 - polyglot
 - fitness
+- light mode just myself, dark mode turned into batman. three.js
