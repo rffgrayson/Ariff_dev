@@ -1,0 +1,130 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        pre {
+            font-family: 'Courier New', monospace;
+            font-size: 6px;
+            line-height: 1;
+            color: #4a9eff;
+            overflow-x: auto;
+            margin-bottom: 40px;
+            white-space: pre;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #4a9eff;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .item {
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+
+        .company:hover {
+            text-decoration: underline;
+        }
+
+        .role {
+            color: #888;
+        }
+
+        .dates {
+            color: #666;
+        }
+
+        .description {
+            color: #aaa;
+            padding-left: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            background: #111;
+            border-radius: 4px;
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .stat-value {
+            color: #4a9eff;
+            font-weight: bold;
+        }
+
+        a {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .reading {
+            color: #888;
+            font-style: italic;
+        }
