@@ -1,11 +1,11 @@
 import js from '@eslint/js';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import prettierConfig from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
-import prettierConfig from 'eslint-config-prettier';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default [
   // Global ignores
