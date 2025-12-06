@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ariff.dev
 Portfolio page
 
@@ -15,3 +16,8 @@ Portfolio page
 - polyglot
 - fitness
 - light mode just myself, dark mode turned into batman. three.js
+=======
+# template-repo
+
+template-repo for any development purpose
+>>>>>>> template/main
