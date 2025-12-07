@@ -210,7 +210,6 @@ h2 {
 /* PRE / ASCII ART               */
 /* ============================= */
 pre {
-  font-family: 'Courier New', monospace;
   font-size: 4px;
   line-height: 1;
   overflow-x: auto;
