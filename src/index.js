@@ -48,13 +48,64 @@ document.addEventListener('keydown', () => {
   updateStats();
 });
 
+// Status messages
+const onlineStatuses = [
+  'online',
+  'coding',
+  'building stuff',
+  'fixing legacy code',
+  'reviewing PRs',
+  'deploying',
+  'reading docs',
+  'debugging',
+  'writing tests',
+  'refactoring',
+];
+
+const offlineStatuses = [
+  'offline',
+  'sleeping',
+  'touching grass',
+  'away from keyboard',
+  'taking a break',
+  'out in the world',
+  'living life',
+  'probably sleeping',
+];
+
+let isOnline = false;
+let statusIndex = 0;
+let statusRotationInterval = null;
+
+const statusSpan = document.getElementById('status-text');
+const statusDot = document.querySelector('.status-dot');
+
+// Rotate status messages
+function rotateStatus() {
+  const currentStatuses = isOnline ? onlineStatuses : offlineStatuses;
+
+  statusSpan.style.opacity = 0;
+
+  setTimeout(() => {
+    statusIndex = (statusIndex + 1) % currentStatuses.length;
+    statusSpan.textContent = currentStatuses[statusIndex];
+    statusSpan.style.opacity = 1;
+  }, 250);
+}
+
+// Start status rotation
+function startStatusRotation() {
+  if (statusRotationInterval) {
+    clearInterval(statusRotationInterval);
+  }
+  statusIndex = 0;
+  statusSpan.textContent = isOnline ? onlineStatuses[0] : offlineStatuses[0];
+  statusRotationInterval = setInterval(rotateStatus, 2500);
+}
+
 // GitHub Status Tracking
 async function fetchGitHubStatus() {
-  const statusElement = document.getElementById('status-text');
-  const statusDot = document.querySelector('.status-dot');
-
   try {
-    // Fetch recent events from GitHub API
     const response = await fetch(`https://api.github.com/users/rffgrayson/events/public`);
 
     if (!response.ok) {
@@ -64,8 +115,7 @@ async function fetchGitHubStatus() {
     const events = await response.json();
 
     if (events.length === 0) {
-      statusElement.textContent = 'idle on GitHub';
-      statusDot.style.backgroundColor = 'var(--comment)';
+      updateOnlineStatus(false);
       return;
     }
 
@@ -76,30 +126,39 @@ async function fetchGitHubStatus() {
     const hoursSince = Math.floor((now - eventDate) / (1000 * 60 * 60));
 
     // Determine status based on recency
-    if (hoursSince < 1) {
-      statusElement.textContent = 'active on GitHub';
-      statusDot.style.backgroundColor = 'var(--green)';
-    } else if (hoursSince < 24) {
-      statusElement.textContent = `active ${hoursSince}h ago`;
-      statusDot.style.backgroundColor = 'var(--yellow)';
-    } else if (hoursSince < 168) {
-      // 7 days
-      const daysSince = Math.floor(hoursSince / 24);
-      statusElement.textContent = `active ${daysSince}d ago`;
-      statusDot.style.backgroundColor = 'var(--orange)';
+    if (hoursSince < 24) {
+      updateOnlineStatus(true);
     } else {
-      statusElement.textContent = 'idle on GitHub';
-      statusDot.style.backgroundColor = 'var(--comment)';
+      updateOnlineStatus(false);
     }
   } catch (error) {
     console.error('Error fetching GitHub status:', error);
-    statusElement.textContent = 'status unavailable';
+    updateOnlineStatus(false);
     statusDot.style.backgroundColor = 'var(--red)';
   }
 }
 
-// Fetch GitHub status on load
+// Update online status
+function updateOnlineStatus(online) {
+  const wasOnline = isOnline;
+  isOnline = online;
+
+  // Update dot color
+  if (isOnline) {
+    statusDot.style.backgroundColor = 'var(--green)';
+  } else {
+    statusDot.style.backgroundColor = 'var(--comment)';
+  }
+
+  // Restart rotation if status changed
+  if (wasOnline !== isOnline) {
+    startStatusRotation();
+  }
+}
+
+// Initialize
 fetchGitHubStatus();
+startStatusRotation();
 
 // Refresh status every 5 minutes
 setInterval(fetchGitHubStatus, 5 * 60 * 1000);

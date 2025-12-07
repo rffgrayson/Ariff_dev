@@ -356,3 +356,54 @@ a:hover {
     opacity: 0;
   }
 }
+
+.studying-link {
+  color: var(--yellow);
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.studying-link:hover {
+  color: var(--orange);
+}
+
+.company.acquired {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.company.acquired:hover {
+  text-decoration: underline;
+}
+
+.company.acquired::after {
+  content: ' (acquired)';
+  color: var(--red);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Add this to your existing styles.css */
+
+/* Smooth transition for status text */
+#status-text {
+  transition: opacity 0.25s ease-in-out;
+}
+
+/* Smooth transition for status dot color changes */
+.status-dot {
+  transition: background-color 0.5s ease-in-out;
+}
+
+/* Optional: smoother pulse animation timing */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
