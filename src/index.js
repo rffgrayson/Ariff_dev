@@ -251,11 +251,11 @@ async function fetchWakaTimeStats() {
   </div>
   <div class="language-item">
     <div class="language-header">
-      <span class="language-name">Python</span>
+      <span class="language-name">Go</span>
       <span class="language-stats">1.0h (19%)</span>
     </div>
     <div class="progress-bar">
-      <div class="progress-fill" style="width: 19%; background-color: #3776ab;"></div>
+      <div class="progress-fill" style="width: 19%; background-color: #00add8;"></div>
     </div>
   </div>
   <div class="language-item">
