@@ -181,7 +181,8 @@ const languageColors = {
   PHP: '#777bb4',
   Swift: '#ffac45',
   Kotlin: '#a97bff',
-  Dart: '#00b4ab',
+  Dart: '#2e6d6aff',
+  ABAP: '#4d10adff',
 };
 
 async function fetchWakaTimeStats() {
@@ -302,6 +303,6 @@ document.querySelector('.breakdown-header').addEventListener('click', function (
     this.textContent = '› language breakdown';
   } else {
     list.style.display = 'none';
-    this.textContent = '› language breakdown (collapsed)';
+    this.textContent = '˅ language breakdown';
   }
 });
