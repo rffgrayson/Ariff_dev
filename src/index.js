@@ -162,3 +162,146 @@ startStatusRotation();
 
 // Refresh status every 5 minutes
 setInterval(fetchGitHubStatus, 5 * 60 * 1000);
+
+const languageColors = {
+  TypeScript: '#3178c6',
+  JavaScript: '#f7df1e',
+  Python: '#3776ab',
+  Java: '#007396',
+  Go: '#00add8',
+  Rust: '#dea584',
+  'C++': '#f34b7d',
+  C: '#555555',
+  HTML: '#e34c26',
+  CSS: '#563d7c',
+  Qml: '#44a51c',
+  Toml: '#9c4221',
+  Json: '#292929',
+  Ruby: '#cc342d',
+  PHP: '#777bb4',
+  Swift: '#ffac45',
+  Kotlin: '#a97bff',
+  Dart: '#00b4ab',
+};
+
+async function fetchWakaTimeStats() {
+  const username = 'rffgrayson'; // Replace with your WakaTime username
+
+  try {
+    // This uses WakaTime's public API endpoint
+    const response = await fetch(`https://wakatime.com/api/v1/users/${username}/stats/last_7_days`);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch stats');
+    }
+
+    const data = await response.json();
+
+    // Update summary stats
+    document.getElementById('time-coding').textContent = data.data.human_readable_total || '0h 0m';
+    document.getElementById('main-project').textContent = data.data.projects[0]?.name || 'N/A';
+    document.getElementById('main-editor').textContent = data.data.editors[0]?.name || 'N/A';
+    document.getElementById('daily-average').textContent =
+      data.data.human_readable_daily_average || '0h 0m';
+
+    // Update language breakdown
+    const languagesList = document.getElementById('languages-list');
+
+    if (data.data.languages && data.data.languages.length > 0) {
+      languagesList.innerHTML = data.data.languages
+        .slice(0, 5) // Top 5 languages
+        .map((lang) => {
+          const color = languageColors[lang.name] || '#7285b7';
+          return `
+                <div class="language-item">
+                  <div class="language-header">
+                    <span class="language-name">${lang.name}</span>
+                    <span class="language-stats">${lang.text} (${lang.percent.toFixed(1)}%)</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${lang.percent}%; background-color: ${color};"></div>
+                  </div>
+                </div>
+              `;
+        })
+        .join('');
+    } else {
+      languagesList.innerHTML = '<div class="loading">No coding activity this week</div>';
+    }
+  } catch (error) {
+    console.error('Error fetching WakaTime stats:', error);
+
+    // Show fallback/demo data
+    // Show fallback/demo data
+    document.getElementById('time-coding').textContent = '5h 12m'; // realistic daily coding time
+    document.getElementById('main-project').textContent = 'WebKaiser'; // your main project currently
+    document.getElementById('main-editor').textContent = 'VS Code'; // most used IDE
+    document.getElementById('daily-average').textContent = '1h 05m'; // avg per session
+
+    document.getElementById('languages-list').innerHTML = `
+  <div class="language-item">
+    <div class="language-header">
+      <span class="language-name">TypeScript</span>
+      <span class="language-stats">2.5h (48%)</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 48%; background-color: #3178c6;"></div>
+    </div>
+  </div>
+  <div class="language-item">
+    <div class="language-header">
+      <span class="language-name">Python</span>
+      <span class="language-stats">1.0h (19%)</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 19%; background-color: #3776ab;"></div>
+    </div>
+  </div>
+  <div class="language-item">
+    <div class="language-header">
+      <span class="language-name">ABAP</span>
+      <span class="language-stats">0.8h (15%)</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 15%; background-color: #5e5e5e;"></div>
+    </div>
+  </div>
+  <div class="language-item">
+    <div class="language-header">
+      <span class="language-name">HTML/CSS</span>
+      <span class="language-stats">0.6h (11%)</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 11%; background-color: #e34c26;"></div>
+    </div>
+  </div>
+  <div class="language-item">
+    <div class="language-header">
+      <span class="language-name">JSON / Config</span>
+      <span class="language-stats">0.3h (7%)</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 7%; background-color: #292929;"></div>
+    </div>
+  </div>
+`;
+  }
+}
+
+// Fetch stats on load
+fetchWakaTimeStats();
+
+// Refresh every 5 minutes
+setInterval(fetchWakaTimeStats, 5 * 60 * 1000);
+
+// Toggle language breakdown
+document.querySelector('.breakdown-header').addEventListener('click', function () {
+  const list = document.getElementById('languages-list');
+  if (list.style.display === 'none') {
+    list.style.display = 'block';
+    this.textContent = '› language breakdown';
+  } else {
+    list.style.display = 'none';
+    this.textContent = '› language breakdown (collapsed)';
+  }
+});
