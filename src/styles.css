@@ -127,13 +127,17 @@ h2 {
   color: var(--comment);
 }
 
+.subtitle {
+  margin-bottom: 3rem;
+}
+
 .status,
 .reading {
   font-style: italic;
 }
 
 .bio {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 
 /* ============================= */
@@ -233,7 +237,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-right: 20px;
+  margin-right: 1rem;
 }
 
 .contact button {
@@ -308,6 +312,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .status-dot {
