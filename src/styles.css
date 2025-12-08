@@ -3,29 +3,28 @@
 /* ============================= */
 :root {
   /* Background Colors */
-  --background: #002451;
-  --lighter-background: #003f8e;
-  --selection: #003f8e;
-  --current-line: #00346e;
+  --background: #221a0f;
+  --lighter-background: #362712;
+  --selection: #362712;
+  --current-line: #2b221a;
 
   /* Foreground/Text Colors */
-  --foreground: #ffffff;
-  --comment: #7285b7;
+  --foreground: #d3af86;
+  --comment: #a57a4c;
 
   /* Syntax Colors */
-  --red: #ff9da4;
-  --orange: #ffc58f;
-  --yellow: #ffeead;
-  --green: #d1f1a9;
-  --cyan: #99ffff;
-  --blue: #bbdaff;
-  --purple: #ebbbff;
+  --red: #dc3958;
+  --orange: #f79a32;
+  --yellow: #f06431;
+  --green: #889b4a;
+  --cyan: #088649;
+  --blue: #7e5f8a;
+  --purple: #98676a;
 
   /* UI Elements */
-  --gutter: #003f8e;
-  --guide: #00346e;
+  --gutter: #362712;
+  --guide: #2b221a;
 }
-
 /* ============================= */
 /* RESET + BASE STYLES           */
 /* ============================= */
@@ -212,7 +211,6 @@ h2 {
 pre {
   font-size: 4px;
   line-height: 1;
-  overflow-x: auto;
   white-space: pre;
   flex-shrink: 0;
 }
@@ -520,4 +518,31 @@ a:hover {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.quote-section {
+  text-align: center;
+}
+.quote-text {
+  font-size: 1rem;
+  color: var(--text);
+  font-style: italic;
+  font-family: 'Courier New', monospace;
+  border-right: 2px solid var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: typing 8s steps(30, end) infinite, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  40% { width: 100%; }
+  60% { width: 100%; }
+  100% { width: 0; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--text); }
 }

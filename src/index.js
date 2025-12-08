@@ -126,7 +126,7 @@ async function fetchGitHubStatus() {
     const hoursSince = Math.floor((now - eventDate) / (1000 * 60 * 60));
 
     // Determine status based on recency
-    if (hoursSince < 24) {
+    if (hoursSince < 1) {
       updateOnlineStatus(true);
     } else {
       updateOnlineStatus(false);
