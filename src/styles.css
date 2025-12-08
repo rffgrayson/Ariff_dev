@@ -33,7 +33,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 2px solid red;
 }
 
 body {
@@ -526,7 +525,7 @@ a:hover {
   text-align: center;
 }
 .quote-text {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--text);
   font-style: italic;
   font-family: 'Courier New', monospace;
