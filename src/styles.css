@@ -870,26 +870,34 @@ a:hover {
 .music-player {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  right: 20px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: white;
-  border: 2px solid #333;
+  background: var(--current-line);
+  border: 2px solid var(--comment);
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .music-player:hover {
-  transform: scale(1.1);
+  border-color: var(--cyan);
+  transform: scale(1.05);
+}
+
+.cd-icon {
+  position: absolute;
+  opacity: 0.3;
+  transition: all 0.3s ease;
 }
 
 .music-player.playing .cd-icon {
   animation: spin 3s linear infinite;
+  opacity: 0.5;
 }
 
 @keyframes spin {
@@ -899,4 +907,25 @@ a:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+.play-icon,
+.pause-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--foreground);
+  position: absolute;
+  transition: opacity 0.2s ease;
+}
+
+.pause-icon {
+  opacity: 0;
+}
+
+.music-player.playing .play-icon {
+  opacity: 0;
+}
+
+.music-player.playing .pause-icon {
+  opacity: 1;
 }

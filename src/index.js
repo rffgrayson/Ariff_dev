@@ -94,3 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
   navigateTo(initialPage);
 });
 
+
+const audio = document.getElementById('bgMusic');
+const toggle = document.getElementById('musicToggle');
+let isPlaying = false;
+
+toggle.addEventListener('click', () => {
+  if (isPlaying) {
+    audio.pause();
+    toggle.classList.remove('playing');
+  } else {
+    audio.play();
+    toggle.classList.add('playing');
+  }
+  isPlaying = !isPlaying;
+});
