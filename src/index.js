@@ -93,3 +93,4 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialPage = window.location.hash.slice(1) || 'home';
   navigateTo(initialPage);
 });
+
