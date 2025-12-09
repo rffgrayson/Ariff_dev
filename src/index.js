@@ -1,99 +1,83 @@
 import './styles.css';
+import { renderBlog, initBlog } from './pages/blog.js';
+import { renderCat, initCat } from './pages/cat.js';
 import { renderHome, initHome } from './pages/home.js';
 import { renderProjects } from './pages/projects.js';
 import { renderResources } from './pages/resources.js';
 
-// Store cleanup function for home page
-let homeCleanup = null;
+// Store cleanup functions
+let currentCleanup = null;
 
-// Router configuration
+// Router
 const routes = {
-  home: renderHome,
-  projects: renderProjects,
-  resources: renderResources,
+  home: { render: renderHome, init: initHome },
+  projects: { render: renderProjects, init: null },
+  resources: { render: renderResources, init: null },
+  blog: { render: renderBlog, init: initBlog },
+  cat: { render: renderCat, init: initCat },
 };
 
-// Navigate to a specific page
 function navigateTo(page) {
   const app = document.getElementById('app-content');
+  const route = routes[page] || routes['home'];
   
-  // If there's app-content element, we're using the new structure
-  if (!app) {
-    console.error('app-content element not found. Make sure your HTML has <div id="app-content"></div>');
-    return;
+  // Cleanup previous page
+  if (currentCleanup) {
+    currentCleanup();
+    currentCleanup = null;
   }
   
-  // Cleanup previous page (especially home page event listeners)
-  if (homeCleanup) {
-    homeCleanup();
-    homeCleanup = null;
+  // Render new page
+  app.innerHTML = route.render();
+  
+  // Initialize page-specific functionality
+  if (route.init) {
+    const cleanup = route.init();
+    if (cleanup && typeof cleanup === 'function') {
+      currentCleanup = cleanup;
+    }
   }
-  
-  // Get the render function for the page
-  const render = routes[page] || routes['home'];
-  
-  // Render the new page
-  app.innerHTML = render();
-  
-  // Initialize home page scripts if on home
-  if (page === 'home') {
-    homeCleanup = initHome();
-  }
-  
-  // Scroll to top on page change
-  window.scrollTo(0, 0);
-  
+
   // Update active nav link
-  updateActiveNavLink(page);
+  updateActiveNav(page);
 }
 
-// Update active navigation link styling
-function updateActiveNavLink(currentPage) {
+// Update active navigation link
+function updateActiveNav(currentPage) {
   const navLinks = document.querySelectorAll('nav a');
   navLinks.forEach(link => {
-    const href = link.getAttribute('href').slice(1); // Remove #
-    if (href === currentPage) {
-      link.style.color = 'var(--cyan)';
-      link.style.fontWeight = 'bold';
+    const linkPage = link.getAttribute('href').slice(1);
+    if (linkPage === currentPage) {
+      link.classList.add('active');
     } else {
-      link.style.color = 'var(--comment)';
-      link.style.fontWeight = 'normal';
+      link.classList.remove('active');
     }
   });
 }
 
-// Initialize the router when DOM is ready
+// Navigation event listeners
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav');
   
-  if (!nav) {
-    console.error('Navigation element not found');
-    return;
-  }
-  
-  // Handle navigation clicks
   nav.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       e.preventDefault();
       const page = e.target.getAttribute('href').slice(1); // Remove #
       navigateTo(page);
-      
-      // Update URL without page reload
-      window.history.pushState({ page }, '', `#${page}`);
+      window.history.pushState({}, '', `#${page}`);
     }
   });
 
-  // Handle browser back/forward buttons
-  window.addEventListener('popstate', (_e) => {
+  // Handle browser back/forward
+  window.addEventListener('popstate', () => {
     const page = window.location.hash.slice(1) || 'home';
     navigateTo(page);
   });
 
-  // Initial page load
+  // Initial load
   const initialPage = window.location.hash.slice(1) || 'home';
   navigateTo(initialPage);
 });
-
 
 const audio = document.getElementById('bgMusic');
 const toggle = document.getElementById('musicToggle');
