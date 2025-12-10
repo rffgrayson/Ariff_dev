@@ -30,6 +30,11 @@ export const resourcesData = {
           description: 'web development tutorials',
         },
         {
+          title: 'Web Dev Simplified',
+          url: 'https://www.youtube.com/@WebDevSimplified',
+          description: 'web dev content creator',
+        },
+        {
           title: 'Webpack',
           url: 'https://webpack.js.org',
           description: 'module bundler docs',
