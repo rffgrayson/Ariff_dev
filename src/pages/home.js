@@ -1,3 +1,5 @@
+import { getFeaturedWork } from './workData.js';
+
 export function renderHome() {
   return `
         <div class="quote-section">
@@ -155,7 +157,54 @@ export function renderHome() {
       <div id="languages-list" class="loading">Loading coding stats...</div>
           <div class="section">
         <div class="project-header"> > projects</div>
-        <p>soon...</p>
+        
+  <div class="section">
+    <h2>featured work</h2>
+    <div class="featured-work-grid">
+      ${getFeaturedWork()
+        .map(
+          (item) => `
+        <div class="featured-work-item">
+          ${
+            item.preview
+              ? `
+            <div class="featured-preview">
+              <img src="${item.preview}" alt="${item.title}">
+            </div>
+          `
+              : ''
+          }
+          <div class="featured-content">
+            <h3 style="color: var(--yellow);">${item.title}</h3>
+            <p style="color: var(--comment); font-size: 0.9rem; margin: 8px 0;">
+              ${item.description}
+            </p>
+            <div style="display: flex; gap: 8px; margin-top: 10px;">
+              ${
+                item.type === 'project'
+                  ? item.tech
+                      .slice(0, 3)
+                      .map(
+                        (tech) =>
+                          `<span style="font-size: 11px; padding: 3px 8px; background: var(--background); color: var(--cyan); border-radius: 3px;">${tech}</span>`
+                      )
+                      .join('')
+                  : `<span style="font-size: 11px; padding: 3px 8px; background: var(--current-line); color: var(--purple); border-radius: 3px;">${item.type}</span>`
+              }
+            </div>
+          </div>
+        </div>
+      `
+        )
+        .join('')}
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="#work" style="color: var(--cyan); text-decoration: none; font-weight: 500;">
+        view all work →
+      </a>
+    </div>
+  </div>
+
       </div>
     </div>
 
