@@ -28,7 +28,11 @@ module.exports = {
         loader: 'html-loader',
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i, // Added .ico
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(mp3|wav|ogg)$/i, // Add this rule for audio files
         type: 'asset/resource',
       },
     ],
