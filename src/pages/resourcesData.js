@@ -43,7 +43,7 @@ export const resourcesData = {
       url: 'https://www.mavenanalytics.io/course/microsoft-power-bi-desktop',
       description: 'Business intelligence & data visualization (Maven Analytics)',
       status: 'completed',
-      tags: ['data', 'bi'],
+      tags: ['data'],
       completedDate: '2024-06-20',
     },
     {
@@ -119,7 +119,7 @@ export const resourcesData = {
       author: 'Aurélien Géron',
       status: 'reading',
       tags: ['ai-ml'],
-      coverImage: '/assets/books/hands-on-ml.jpg', // Add your book cover images
+      coverImage: 'https://www.oreilly.com/covers/urn:orm:book:9798341607972/400w/-on-ml-book.jpg', // Add your book cover images
       url: 'https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/',
     },
     // Add more books with coverImage property
