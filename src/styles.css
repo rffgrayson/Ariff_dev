@@ -1924,3 +1924,31 @@ nav a.active {
   margin: 0 0 8px 0;
   font-size: 1.1rem;
 }
+
+.blog-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--comment);
+  color: var(--comment);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-tag:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.filter-tag.active {
+  background: var(--cyan);
+  color: var(--background);
+  border-color: var(--cyan);
+}
