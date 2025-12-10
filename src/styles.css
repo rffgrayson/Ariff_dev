@@ -1952,3 +1952,463 @@ nav a.active {
   color: var(--background);
   border-color: var(--cyan);
 }
+
+.blog-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--comment);
+  color: var(--comment);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-tag:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.filter-tag.active {
+  background: var(--cyan);
+  color: var(--background);
+  border-color: var(--cyan);
+}
+
+/* Resources Filters */
+.resources-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--comment);
+  color: var(--comment);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.filter-tag:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.filter-tag.active {
+  background: var(--cyan);
+  color: var(--background);
+  border-color: var(--cyan);
+}
+
+/* Books Grid */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.book-cover {
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.book-cover img:hover {
+  transform: scale(1.05);
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.book-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.book-title a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.book-title a:hover {
+  color: var(--yellow);
+}
+
+.book-author {
+  color: var(--comment);
+  font-size: 14px;
+  margin: 0;
+}
+
+.book-status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  width: fit-content;
+}
+
+.book-status.status-reading {
+  background: var(--yellow);
+  color: var(--background);
+}
+
+.book-status.status-completed {
+  background: var(--green);
+  color: var(--background);
+}
+
+.book-status.status-to-read {
+  background: var(--comment);
+  color: var(--background);
+}
+
+/* Videos Grid */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.video-thumbnail a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.video-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover img {
+  transform: scale(1.05);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.video-thumbnail:hover .play-overlay {
+  font-size: 56px;
+  color: var(--cyan);
+}
+
+.video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.video-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.video-title a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.video-title a:hover {
+  color: var(--yellow);
+}
+
+.video-channel {
+  color: var(--comment);
+  font-size: 14px;
+  margin: 0;
+}
+
+.video-desc {
+  color: var(--foreground);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.video-date {
+  color: var(--comment);
+  font-size: 12px;
+}
+
+/* Learning Items (Courses/Certifications) */
+.learning-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid var(--comment);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.learning-item:hover {
+  border-color: var(--cyan);
+}
+
+.learning-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.resource-link {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.resource-link:hover {
+  color: var(--yellow);
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.inprogress {
+  background: var(--yellow);
+  color: var(--background);
+}
+
+.status-badge.completed {
+  background: var(--green);
+  color: var(--background);
+}
+
+.status-badge.pending {
+  background: var(--comment);
+  color: var(--background);
+}
+
+.learning-desc {
+  color: var(--foreground);
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.learning-date {
+  color: var(--comment);
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Progress Bar */
+.progress-container {
+  margin: 15px 0;
+}
+
+.progress-label {
+  color: var(--comment);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--background-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--yellow);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Course Modules */
+.course-list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.course-item {
+  padding: 12px;
+  background: var(--background-secondary);
+  border-radius: 6px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.course-item:hover {
+  border-left-color: var(--cyan);
+}
+
+.course-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.course-number {
+  color: var(--purple);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.course-title {
+  color: var(--foreground);
+  flex: 1;
+  font-size: 14px;
+}
+
+.course-status {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.course-status.completed {
+  color: var(--green);
+}
+
+.course-status.current {
+  color: var(--yellow);
+}
+
+.course-status.pending {
+  color: var(--comment);
+}
+
+.course-time {
+  color: var(--comment);
+  font-size: 12px;
+  margin: 5px 0 0 0;
+}
+
+/* Sub Resources (Documentation) */
+.sub-resources {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--comment);
+}
+
+.sub-header {
+  color: var(--comment);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.sub-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sub-link {
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 4px 10px;
+  border: 1px solid var(--cyan);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.sub-link:hover {
+  background: var(--cyan);
+  color: var(--background);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+  }
+
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .course-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

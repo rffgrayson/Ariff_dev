@@ -92,6 +92,7 @@ export function initBlog() {
       e.preventDefault();
       const postId = parseInt(e.target.dataset.postId);
       const post = blogPosts.find((p) => p.id === postId);
+      // eslint-disable-next-line no-console
       console.log('Opening post:', post);
       // Add your logic to open full post view
     });
