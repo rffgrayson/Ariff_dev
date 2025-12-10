@@ -2,7 +2,7 @@ import './styles.css';
 import { renderBlog, initBlog } from './pages/blog.js';
 import { renderCat, initCat } from './pages/cat.js';
 import { renderHome, initHome } from './pages/home.js';
-import { renderResources } from './pages/resources.js';
+import { renderResources, initResources } from './pages/resources.js';
 import { renderWork, initWork } from './pages/work.js';
 
 // Store cleanup functions
@@ -12,7 +12,7 @@ let currentCleanup = null;
 const routes = {
   home: { render: renderHome, init: initHome },
   work: { render: renderWork, init: initWork },  // CHANGED FROM projects
-  resources: { render: renderResources, init: null },
+  resources: { render: renderResources, init: initResources },
   blog: { render: renderBlog, init: initBlog },
   cat: { render: renderCat, init: initCat },
 };

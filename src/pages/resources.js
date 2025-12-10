@@ -231,7 +231,7 @@ export function initResources() {
       const selectedTag = e.target.dataset.tag;
 
       // Re-render resources with selected tag
-      const container = document.querySelector('#app');
+      const container = document.querySelector('#app-content');
       container.innerHTML = renderResources(selectedTag);
 
       // Re-initialize event listeners after re-render
