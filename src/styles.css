@@ -41,6 +41,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   text-size-adjust: 100%;
+  min-height: 100vh;
 }
 
 /* CRT Scanline Effect */
