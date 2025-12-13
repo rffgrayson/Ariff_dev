@@ -2459,14 +2459,13 @@ nav a.active {
 
 .finished-resource-card {
   display: flex;
-  gap: 25px;
   background: var(--current-line);
   border-radius: 8px;
   border-left: 3px solid var(--green);
   transition:
     transform 0.2s,
     box-shadow 0.2s;
-  align-items: center;
+  align-items: stretch; /* 🔴 IMPORTANT */
 }
 
 .finished-resource-card:hover {
@@ -2476,11 +2475,9 @@ nav a.active {
 
 .finished-thumbnail {
   flex-shrink: 0;
-  width: auto;
-  height: auto;
+  width: 8rem; /* fixed width */
   border-radius: 6px;
   overflow: hidden;
-  position: relative;
   background: var(--background);
 }
 
@@ -2493,18 +2490,7 @@ nav a.active {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.thumbnail-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--foreground);
+  display: block;
 }
 
 .completed-overlay {
@@ -2528,12 +2514,17 @@ nav a.active {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  margin: 1rem;
 }
 
 .finished-title {
   color: var(--cyan);
   font-size: 1.3rem;
   margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .finished-title a {

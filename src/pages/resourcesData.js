@@ -53,6 +53,8 @@ export const resourcesData = {
       status: 'completed',
       tags: ['data'],
       completedDate: '2024-06-20',
+      thumbnail:
+        'https://cdn.asp.events/CLIENT_NASBA_287596D2_5056_B733_49DFF69B632BDF66/companyProfiles/9B202CCF-9CBC-FF5D-27CA5E9A37D2EDC7-logo.png',
     },
     {
       id: 3,
@@ -63,6 +65,8 @@ export const resourcesData = {
       completedDate: '2024-08-28',
       link: 'https://www.coursera.org/learn/machine-learning',
       credential: 'https://www.coursera.org/account/accomplishments/certificate/G7E7GGGW6G2H',
+      thumbnail:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZnxfo58TJV8tIfREI-pRpi-rfeoc5PQrb5g&s',
     },
     {
       id: 4,
@@ -74,6 +78,8 @@ export const resourcesData = {
       credential: 'https://badger.learning.sap.com/verify/xotel-sacak-nutof-disup-kacag',
       link: 'https://learning.sap.com/courses/basic-abap-programming',
       tags: ['sap', 'abap'],
+      thumbnail:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdFxN7F9Naj_OsFHUrA5liE-31COk42yvczg&s',
     },
   ],
 };

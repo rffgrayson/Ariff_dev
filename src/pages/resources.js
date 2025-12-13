@@ -104,12 +104,6 @@ function renderOngoingResource(resource) {
 
 function renderFinishedResource(resource) {
   // Generate thumbnail URL
-  let thumbnailUrl = '';
-  if (resource.url) {
-    thumbnailUrl = `https://api.screenshotmachine.com/?key=demo&url=${encodeURIComponent(resource.url)}&dimension=300x200`;
-  } else if (resource.link) {
-    thumbnailUrl = `https://api.screenshotmachine.com/?key=demo&url=${encodeURIComponent(resource.link)}&dimension=300x200`;
-  }
 
   // Handle module-based courses
   const displayTitle =
@@ -123,6 +117,9 @@ function renderFinishedResource(resource) {
   const displayAuthor =
     resource.modules && resource.modules[0] ? resource.modules[0].author : resource.author;
 
+  const displayThumbnail =
+    resource.modules && resource.modules[0] ? resource.modules[0].author : resource.thumbnail;
+
   const displayCredential =
     resource.modules && resource.modules[0] ? resource.modules[0].credential : resource.credential;
 
@@ -134,19 +131,7 @@ function renderFinishedResource(resource) {
   return `
     <div class="finished-resource-card" data-tags="${(resource.tags || []).join(',')}">
       <div class="finished-thumbnail faded">
-        ${
-          thumbnailUrl
-            ? `
-          <img src="${thumbnailUrl}" alt="${displayTitle}" 
-               onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23282a36%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%236272a4%22 font-size=%2216%22%3E${displayTitle.substring(0, 20)}%3C/text%3E%3C/svg%3E'">
-        `
-            : `
-          <div class="thumbnail-placeholder">
-            <span>${displayTitle.substring(0, 2).toUpperCase()}</span>
-          </div>
-        `
-        }
-        <div class="completed-overlay">✓</div>
+        <img src=${displayThumbnail}>
       </div>
       
       <div class="finished-content">
