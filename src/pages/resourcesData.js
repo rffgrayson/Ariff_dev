@@ -83,6 +83,7 @@ export const resourcesData = {
     {
       id: 5,
       title: ' S4D401 - Deepening Your ABAP Programming Knowledge',
+      description: 'Acquiring core ABAP skills',
       author: 'SAP',
       duration: '16 hr',
       status: 'in-progress',
