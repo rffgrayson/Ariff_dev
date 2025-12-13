@@ -2493,23 +2493,6 @@ nav a.active {
   display: block;
 }
 
-.completed-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--green);
-  color: var(--background);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
 .finished-content {
   flex: 1;
   display: flex;
@@ -2573,15 +2556,16 @@ nav a.active {
 }
 
 .credential-badge {
-  display: inline-block;
+  display: flex;
   color: var(--purple);
   text-decoration: none;
   font-size: 0.9rem;
-  padding: 6px 12px;
+  padding: 3px 6px;
   border: 1px solid var(--purple);
   border-radius: 4px;
   transition: all 0.2s;
-  width: fit-content;
+  /* width: fit-content; */
+  align-items: center;
 }
 
 .credential-badge:hover {

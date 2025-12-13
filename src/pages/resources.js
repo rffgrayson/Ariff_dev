@@ -91,7 +91,7 @@ function renderOngoingResource(resource) {
     <div class="learning-item ongoing-item" data-tags="${(resource.tags || []).join(',')}">
       <div class="learning-header">
         ${titleHTML}
-        <span class="status-badge in-progress">in progress</span>
+        <span class="status-badge in-progress">${resource.progress.percentage}%</span>
       </div>
       <p class="learning-desc">${resource.description || ''}</p>
       ${dateHTML ? `<p class="learning-date">${dateHTML}</p>` : ''}
@@ -142,7 +142,7 @@ function renderFinishedResource(resource) {
           <div class="first-details">
                   ${displayAuthor ? `<div class="finished-author">by ${displayAuthor}</div>` : ''}
         <div class="finished-meta">
-          <span class="finished-date">✓ Date: ${displayDate}</span>
+          <span class="finished-date">Date: ${displayDate}</span>
         </div>
           </div>
           ${

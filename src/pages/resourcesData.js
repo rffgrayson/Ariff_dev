@@ -77,7 +77,7 @@ export const resourcesData = {
       completedDate: '2025-10-28',
       credential: 'https://badger.learning.sap.com/verify/xotel-sacak-nutof-disup-kacag',
       link: 'https://learning.sap.com/courses/basic-abap-programming',
-      tags: ['sap', 'abap'],
+      tags: ['sap'],
       thumbnail:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdFxN7F9Naj_OsFHUrA5liE-31COk42yvczg&s',
     },
