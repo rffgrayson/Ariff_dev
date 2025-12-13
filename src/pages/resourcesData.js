@@ -10,7 +10,7 @@ export const resourcesData = {
       startDate: '2024-12-11',
       lastUpdated: 'current',
       progress: {
-        label: 'Full Stack JavaScript Path',
+        label: 'JavaScript Course = A Bit of Computer Science',
         percentage: 55,
       },
       documentation: [
@@ -42,7 +42,6 @@ export const resourcesData = {
         },
       ],
     },
-
     {
       id: 2,
       title: 'Microsoft Power BI Desktop for Business Intelligence',
@@ -80,6 +79,21 @@ export const resourcesData = {
       tags: ['sap'],
       thumbnail:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdFxN7F9Naj_OsFHUrA5liE-31COk42yvczg&s',
+    },
+    {
+      id: 5,
+      title: ' S4D401 - Deepening Your ABAP Programming Knowledge',
+      author: 'SAP',
+      duration: '16 hr',
+      status: 'in-progress',
+      link: 'https://learning.sap.com/courses/deepening-your-abap-programming-knowledge',
+      tags: ['sap'],
+      startDate: '2025-11-10',
+      lastUpdated: 'current',
+      progress: {
+        label: 'Analyzing and Testing Code',
+        percentage: 8,
+      },
     },
   ],
 };
