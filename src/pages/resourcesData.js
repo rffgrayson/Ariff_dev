@@ -17,132 +17,63 @@ export const resourcesData = {
         {
           title: 'MDN Web Docs',
           url: 'https://developer.mozilla.org',
-          description: 'web platform documentation',
+          description: 'Web platform documentation',
         },
         {
           title: 'JavaScript.info',
           url: 'https://javascript.info',
-          description: 'modern javascript tutorial',
+          description: 'Modern JavaScript tutorial',
         },
         {
           title: 'W3Schools',
           url: 'https://www.w3schools.com',
-          description: 'web development tutorials',
+          description: 'Web development tutorials',
         },
         {
           title: 'Web Dev Simplified',
           url: 'https://www.youtube.com/@WebDevSimplified',
-          description: 'web dev content creator',
+          description: 'Web dev content creator',
         },
         {
           title: 'Webpack',
           url: 'https://webpack.js.org',
-          description: 'module bundler docs',
+          description: 'Module bundler documentation',
           date: '2025-12-10',
         },
       ],
     },
+
     {
       id: 2,
-      title: 'Power BI Desktop',
+      title: 'Microsoft Power BI Desktop for Business Intelligence',
       url: 'https://www.mavenanalytics.io/course/microsoft-power-bi-desktop',
-      description: 'Business intelligence & data visualization (Maven Analytics)',
+      author: 'Maven Analytics',
+      credential:
+        'https://certificates.mavenanalytics.io/ce037db6-0a60-4364-ba1a-9a937f7c7d50#acc.wAeJ3vVB',
       status: 'completed',
       tags: ['data'],
       completedDate: '2024-06-20',
     },
     {
       id: 3,
-      title: 'Machine Learning Specialization',
-      url: 'https://www.coursera.org/specializations/machine-learning-introduction',
-      description: "Andrew Ng's foundational ML course (Stanford/Coursera)",
-      status: 'in-progress',
+      title: 'Supervised Machine Learning: Regression and Classification',
       tags: ['ai-ml'],
-      modules: [
-        {
-          title: 'Course 1: Supervised Machine Learning',
-          status: 'completed',
-          completedDate: '2024-08-28',
-        },
-        {
-          title: 'Course 2: Advanced Learning Algorithms',
-          status: 'completed',
-          completedDate: '2025-01-31',
-        },
-        {
-          title: 'Course 3: Unsupervised Learning & Recommender Systems',
-          status: 'in-progress',
-        },
-      ],
+      author: 'DeepLearning.AI',
+      status: 'completed',
+      completedDate: '2024-08-28',
+      link: 'https://www.coursera.org/learn/machine-learning',
+      credential: 'https://www.coursera.org/account/accomplishments/certificate/G7E7GGGW6G2H',
     },
-  ],
-
-  certifications: [
     {
-      id: 1,
-      title: 'SAP Certified Associate - Back-End Developer - ABAP Cloud',
-      description: 'Acquiring Core ABAP Skills',
-      status: 'in-progress',
-      tags: ['sap-abap'],
-      modules: [
-        {
-          code: 'S4D400',
-          title: 'Learning Basic ABAP Programming',
-          duration: '16 hr',
-          status: 'completed',
-          completedDate: '2025-10-28',
-        },
-        {
-          code: 'S4D401',
-          title: 'Deepening Your ABAP Programming Knowledge',
-          duration: '23 hr',
-          status: 'in-progress',
-          progress: 'ch 1/9',
-        },
-        {
-          code: 'S4D430',
-          title: 'Building Data Models with ABAP Dictionary & CDS',
-          duration: '20 hr',
-          status: 'pending',
-          progress: 'ch 0/7',
-        },
-        {
-          code: 'S4Dxxx',
-          title: 'Practicing Clean Core Extensibility for S/4HANA',
-          status: 'in-progress',
-          progress: 'ch 2/5',
-          lastUpdated: 'current',
-        },
-      ],
+      id: 4,
+      title: ' S4D400 - Learning Basic ABAP Programming',
+      author: 'SAP',
+      duration: '16 hr',
+      status: 'completed',
+      completedDate: '2025-10-28',
+      credential: 'https://badger.learning.sap.com/verify/xotel-sacak-nutof-disup-kacag',
+      link: 'https://learning.sap.com/courses/basic-abap-programming',
+      tags: ['sap', 'abap'],
     },
-  ],
-
-  books: [
-    {
-      id: 1,
-      title: 'Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow',
-      author: 'Aurélien Géron',
-      status: 'reading',
-      tags: ['ai-ml'],
-      coverImage: 'https://www.oreilly.com/covers/urn:orm:book:9798341607972/400w/-on-ml-book.jpg', // Add your book cover images
-      url: 'https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/',
-    },
-    // Add more books with coverImage property
-  ],
-
-  videos: [
-    {
-      id: 1,
-      title: '[1hr Talk] Intro to Large Language Models',
-      channel: 'Andrej Karpathy',
-      url: 'https://www.youtube.com/watch?v=zjkBMFhNj_g',
-      embedId: 'zjkBMFhNj_g', // YouTube video ID for embedding
-      thumbnail: 'https://img.youtube.com/vi/zjkBMFhNj_g/maxresdefault.jpg',
-      type: 'tutorial',
-      tags: ['ai-ml'],
-      date: '2025-12-10',
-      description: 'Introduction to LLMs, their training, and applications',
-    },
-    // Add more standalone videos (not from Odin Project)
   ],
 };

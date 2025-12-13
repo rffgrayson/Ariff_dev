@@ -2,115 +2,98 @@ import { resourcesData } from './resourcesData.js';
 
 function getAllTags() {
   const tags = new Set();
-
-  // Collect tags from all resource types
-  [
-    ...resourcesData.courses,
-    ...resourcesData.certifications,
-    ...resourcesData.books,
-    ...resourcesData.videos,
-  ].forEach((item) => {
+  resourcesData.courses.forEach((item) => {
     if (item.tags) {
       item.tags.forEach((tag) => tags.add(tag));
     }
   });
-
   return Array.from(tags).sort();
 }
 
 function filterByTag(tag) {
   if (tag === 'all') {
-    return resourcesData;
+    return resourcesData.courses;
   }
-
-  return {
-    courses: resourcesData.courses.filter((item) => item.tags?.includes(tag)),
-    certifications: resourcesData.certifications.filter((item) => item.tags?.includes(tag)),
-    books: resourcesData.books.filter((item) => item.tags?.includes(tag)),
-    videos: resourcesData.videos.filter((item) => item.tags?.includes(tag)),
-  };
+  return resourcesData.courses.filter((item) => item.tags?.includes(tag));
 }
 
-function renderCourse(course) {
-  const statusClass = course.status.replace('-', '');
+function isCompleted(item) {
+  return item.status === 'completed';
+}
 
-  let progressHTML = '';
-  if (course.progress) {
-    progressHTML = `
-      <div class="progress-container">
-        <div class="progress-label">${course.progress.label}</div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: ${course.progress.percentage}%; background-color: var(--yellow);"></div>
-        </div>
+function renderOngoingResource(resource) {
+  const progressHTML = resource.progress
+    ? `
+    <div class="progress-container">
+      <div class="progress-label">${resource.progress.label}</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: ${resource.progress.percentage}%; background-color: var(--yellow);"></div>
       </div>
-    `;
-  }
+    </div>
+  `
+    : '';
 
-  let docsHTML = '';
-  if (course.documentation) {
-    docsHTML = `
-      <div class="sub-resources">
-        <div class="sub-header">documentation & resources:</div>
-        <div class="sub-list">
-          ${course.documentation
-            .map(
-              (doc) =>
-                `<a href="${doc.url}" target="_blank" class="sub-link" title="${doc.description}">${doc.title}</a>`
-            )
-            .join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  let modulesHTML = '';
-  if (course.modules) {
-    modulesHTML = `
-      <div class="course-list">
-        ${course.modules
-          .map((module) => {
-            let statusDisplay = '';
-            if (module.status === 'completed') {
-              statusDisplay = `<span class="course-status completed">✓ completed ${module.completedDate || ''}</span>`;
-            } else if (module.status === 'in-progress') {
-              statusDisplay = `<span class="course-status current">→ ${module.progress || 'in progress'}</span>`;
-            } else if (module.status === 'pending') {
-              statusDisplay = `<span class="course-status pending">⋯ ${module.progress || 'pending'}</span>`;
-            }
-
-            return `
-            <div class="course-item">
-              <div class="course-header">
-                ${module.code ? `<span class="course-number">${module.code}</span>` : ''}
-                <span class="course-title">${module.title}</span>
-                ${statusDisplay}
-              </div>
-              ${module.duration ? `<p class="course-time">${module.duration}</p>` : ''}
-            </div>
-          `;
-          })
+  const docsHTML = resource.documentation
+    ? `
+    <div class="sub-resources">
+      <div class="sub-header">documentation & resources:</div>
+      <div class="sub-list">
+        ${resource.documentation
+          .map(
+            (doc) =>
+              `<a href="${doc.url}" target="_blank" class="sub-link" title="${doc.description}">${doc.title}</a>`
+          )
           .join('')}
       </div>
-    `;
-  }
+    </div>
+  `
+    : '';
 
-  const titleHTML = course.url
-    ? `<a href="${course.url}" target="_blank" class="resource-link">${course.title}</a>`
-    : `<span class="resource-link">${course.title}</span>`;
+  const modulesHTML = resource.modules
+    ? `
+    <div class="course-list">
+      ${resource.modules
+        .map((module) => {
+          let statusDisplay = '';
+          if (module.status === 'completed') {
+            statusDisplay = `<span class="course-status completed">✓ completed ${module.completedDate || ''}</span>`;
+          } else if (module.status === 'in-progress') {
+            statusDisplay = `<span class="course-status current">→ ${module.progress || 'in progress'}</span>`;
+          } else if (module.status === 'pending') {
+            statusDisplay = `<span class="course-status pending">⋯ pending</span>`;
+          }
 
-  const dateHTML = course.completedDate
-    ? `<span class="item-date">${course.completedDate}</span>`
-    : course.startDate
-      ? `<span class="item-date">started: ${course.startDate}</span>`
-      : '';
+          return `
+          <div class="course-item">
+            <div class="course-header">
+              ${module.code ? `<span class="course-number">${module.code}</span>` : ''}
+              <span class="course-title">${module.title}</span>
+              ${statusDisplay}
+            </div>
+            ${module.duration ? `<p class="course-time">${module.duration}</p>` : ''}
+          </div>
+        `;
+        })
+        .join('')}
+    </div>
+  `
+    : '';
+
+  const titleHTML = resource.url
+    ? `<a href="${resource.url}" target="_blank" class="resource-link">${resource.title}</a>`
+    : `<span class="resource-link">${resource.title}</span>`;
+
+  const dateHTML = resource.startDate
+    ? `<span class="item-date">started: ${resource.startDate}</span>`
+    : '';
 
   return `
-    <div class="learning-item" data-tags="${(course.tags || []).join(',')}">
+    <div class="learning-item ongoing-item" data-tags="${(resource.tags || []).join(',')}">
       <div class="learning-header">
         ${titleHTML}
-        <span class="status-badge ${statusClass}">${course.status.replace('-', ' ')}</span>
+        <span class="status-badge in-progress">in progress</span>
       </div>
-      <p class="learning-desc">${course.description}</p>
+      <p class="learning-desc">${resource.description || ''}</p>
       ${dateHTML ? `<p class="learning-date">${dateHTML}</p>` : ''}
       ${progressHTML}
       ${modulesHTML}
@@ -119,39 +102,76 @@ function renderCourse(course) {
   `;
 }
 
-function renderBook(book) {
-  return `
-    <div class="book-item learning-item" data-tags="${(book.tags || []).join(',')}">
-      <div class="book-cover">
-        <img src="${book.coverImage}" alt="${book.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22180%22%3E%3Crect fill=%22%23282a36%22 width=%22120%22 height=%22180%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%236272a4%22 font-size=%2214%22%3ENo Image%3C/text%3E%3C/svg%3E'">
-      </div>
-      <div class="book-info">
-        <h3 class="book-title">
-          ${book.url ? `<a href="${book.url}" target="_blank">${book.title}</a>` : book.title}
-        </h3>
-        <p class="book-author">${book.author}</p>
-        <span class="book-status status-${book.status}">${book.status}</span>
-      </div>
-    </div>
-  `;
-}
+function renderFinishedResource(resource) {
+  // Generate thumbnail URL
+  let thumbnailUrl = '';
+  if (resource.url) {
+    thumbnailUrl = `https://api.screenshotmachine.com/?key=demo&url=${encodeURIComponent(resource.url)}&dimension=300x200`;
+  } else if (resource.link) {
+    thumbnailUrl = `https://api.screenshotmachine.com/?key=demo&url=${encodeURIComponent(resource.link)}&dimension=300x200`;
+  }
 
-function renderVideo(video) {
+  // Handle module-based courses
+  const displayTitle =
+    resource.modules && resource.modules[0] ? resource.modules[0].title : resource.title;
+
+  const displayUrl =
+    resource.modules && resource.modules[0]
+      ? resource.modules[0].link
+      : resource.link || resource.url;
+
+  const displayAuthor =
+    resource.modules && resource.modules[0] ? resource.modules[0].author : resource.author;
+
+  const displayCredential =
+    resource.modules && resource.modules[0] ? resource.modules[0].credential : resource.credential;
+
+  const displayDate =
+    resource.modules && resource.modules[0]
+      ? resource.modules[0].completedDate
+      : resource.completedDate;
+
   return `
-    <div class="video-item learning-item" data-tags="${(video.tags || []).join(',')}">
-      <div class="video-thumbnail">
-        <a href="${video.url}" target="_blank">
-          <img src="${video.thumbnail}" alt="${video.title}">
-          <div class="play-overlay">▶</div>
-        </a>
+    <div class="finished-resource-card" data-tags="${(resource.tags || []).join(',')}">
+      <div class="finished-thumbnail faded">
+        ${
+          thumbnailUrl
+            ? `
+          <img src="${thumbnailUrl}" alt="${displayTitle}" 
+               onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23282a36%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%236272a4%22 font-size=%2216%22%3E${displayTitle.substring(0, 20)}%3C/text%3E%3C/svg%3E'">
+        `
+            : `
+          <div class="thumbnail-placeholder">
+            <span>${displayTitle.substring(0, 2).toUpperCase()}</span>
+          </div>
+        `
+        }
+        <div class="completed-overlay">✓</div>
       </div>
-      <div class="video-info">
-        <h3 class="video-title">
-          <a href="${video.url}" target="_blank">${video.title}</a>
+      
+      <div class="finished-content">
+        <h3 class="finished-title">
+          ${displayUrl ? `<a href="${displayUrl}" target="_blank">${displayTitle}</a>` : displayTitle}
         </h3>
-        <p class="video-channel">${video.channel}</p>
-        ${video.description ? `<p class="video-desc">${video.description}</p>` : ''}
-        <span class="video-date">${video.date}</span>
+        <div class="completed-details-section">
+          <div class="first-details">
+                  ${displayAuthor ? `<div class="finished-author">by ${displayAuthor}</div>` : ''}
+        <div class="finished-meta">
+          <span class="finished-date">✓ Date: ${displayDate}</span>
+        </div>
+          </div>
+          ${
+            displayCredential
+              ? `
+          <a href="${displayCredential}" target="_blank" class="credential-badge">
+            View Credential →
+          </a>
+        `
+              : ''
+          }
+        </div>
+
+        
       </div>
     </div>
   `;
@@ -159,50 +179,14 @@ function renderVideo(video) {
 
 export function renderResources(selectedTag = 'all') {
   const allTags = getAllTags();
-  const filteredData = filterByTag(selectedTag);
-  const sections = [];
+  const filteredCourses = filterByTag(selectedTag);
 
-  // Courses Section
-  if (filteredData.courses.length > 0) {
-    sections.push(`
-      <h2 style="color: var(--yellow); margin-top: 30px;">courses</h2>
-      ${filteredData.courses.map((course) => renderCourse(course)).join('')}
-    `);
-  }
+  const ongoing = filteredCourses.filter((r) => !isCompleted(r));
+  const finished = filteredCourses.filter((r) => isCompleted(r)).reverse();
 
-  // Certifications Section
-  if (filteredData.certifications.length > 0) {
-    sections.push(`
-      <h2 style="color: var(--yellow); margin-top: 40px;">certifications</h2>
-      ${filteredData.certifications.map((cert) => renderCourse(cert)).join('')}
-    `);
-  }
-
-  // Books Section
-  if (filteredData.books.length > 0) {
-    sections.push(`
-      <h2 style="color: var(--yellow); margin-top: 40px;">books</h2>
-      <div class="books-grid">
-        ${filteredData.books.map((book) => renderBook(book)).join('')}
-      </div>
-    `);
-  }
-
-  // Videos Section
-  if (filteredData.videos.length > 0) {
-    sections.push(`
-      <h2 style="color: var(--yellow); margin-top: 40px;">videos</h2>
-      <div class="videos-grid">
-        ${filteredData.videos.map((video) => renderVideo(video)).join('')}
-      </div>
-    `);
-  }
+  // Get currently reading from ongoing courses
 
   return `
-    <div class="page-header">
-      <h1 style="color: var(--cyan);">resources</h1>
-      <p style="color: var(--comment); margin-top: 10px;">learning paths & tools</p>
-    </div>
 
     <div class="resources-filters">
       <button class="filter-tag ${selectedTag === 'all' ? 'active' : ''}" data-tag="all">all</button>
@@ -217,8 +201,46 @@ export function renderResources(selectedTag = 'all') {
         .join('')}
     </div>
 
-    <div class="resources-section">
-      ${sections.length > 0 ? sections.join('') : '<p style="color: var(--comment); text-align: center; padding: 40px;">No resources found for this tag.</p>'}
+    <div class="resources-container">
+      ${
+        ongoing.length > 0
+          ? `
+        <section class="section-block">
+          <h2 style="color: var(--yellow); margin-bottom: 20px;">
+            → ongoing
+            <span style="color: var(--comment); font-size: 1rem; margin-left: 10px;">(${ongoing.length})</span>
+          </h2>
+          ${ongoing.map((r) => renderOngoingResource(r)).join('')}
+        </section>
+      `
+          : ''
+      }
+
+      ${
+        finished.length > 0
+          ? `
+        <section class="section-block">
+          <h2 style="color: var(--green); margin-bottom: 20px; margin-top: 50px;">
+            ✓ finished
+            <span style="color: var(--comment); font-size: 1rem; margin-left: 10px;">(${finished.length})</span>
+          </h2>
+          <div class="finished-stack">
+            ${finished.map((r) => renderFinishedResource(r)).join('')}
+          </div>
+        </section>
+      `
+          : ''
+      }
+
+      ${
+        ongoing.length === 0 && finished.length === 0
+          ? `
+        <p style="color: var(--comment); text-align: center; padding: 40px;">
+          No resources found for this tag.
+        </p>
+      `
+          : ''
+      }
     </div>
   `;
 }
@@ -229,12 +251,8 @@ export function initResources() {
   filterButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
       const selectedTag = e.target.dataset.tag;
-
-      // Re-render resources with selected tag
       const container = document.querySelector('#app-content');
       container.innerHTML = renderResources(selectedTag);
-
-      // Re-initialize event listeners after re-render
       initResources();
     });
   });
