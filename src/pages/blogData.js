@@ -1,82 +1,12 @@
 export const blogPosts = [
   {
     id: 1,
-    title: 'Classic ABAP vs ABAP Cloud (The Glow Up)',
-    date: 'Dec 11, 2025',
-    tags: ['abap', 'sap', 'cloud'],
-    excerpt:
-      'Comparing classic ABAP to ABAP Cloud — basically the old uncle vs the new gym bro version.',
-    content: `
-      <p><strong>Classic ABAP vs ABAP Cloud — the quick version</strong></p>
-      <p>Classic ABAP is like your old kampung house. Cozy, full access, you can modify anything, even the walls if you want. ABAP Cloud? More like a modern condo: clean, structured, and you can't simply knock the wall because "management doesn’t allow".</p>
-
-      <h3>Main Differences (my version)</h3>
-      <ul>
-        <li><strong>Extensions:</strong> Classic ABAP: "modify lah". ABAP Cloud: "please use the proper API, sir".</li>
-        <li><strong>APIs:</strong> Cloud gives you only the safe, stable ones. No playing with dangerous internals.</li>
-        <li><strong>Environment:</strong> Classic = on-prem. Cloud = BTP + clean-core vibes.</li>
-        <li><strong>Upgrades:</strong> Cloud won't break because SAP literally doesn't let you touch the forbidden stuff.</li>
-      </ul>
-
-      <p>Conclusion? If you want a future-proof SAP career, you better start speaking ABAP Cloud before SAP leaves you behind like you're still using Nokia 3310.</p>
-    `,
-  },
-  {
-    id: 2,
-    title: 'Why Study DSA? (Short answer: suffering builds character)',
-    date: 'Dec 11, 2025',
-    tags: ['dsa', 'learning'],
-    excerpt: 'DSA isn’t just for interviews. It’s basically gym training but for your brain.',
-    content: `
-      <p><strong>Why DSA?</strong></p>
-      <p>DSA is that one thing everyone complains about but still has to learn. Like cardio. Or taxes. But the truth is — knowing DSA makes you think better as a developer.</p>
-
-      <h3>Benefits (trust me lah)</h3>
-      <ul>
-        <li>You actually understand what your code is doing instead of "hope it works".</li>
-        <li>You can solve problems faster (good when deadlines are chasing you).</li>
-        <li>You stop writing O(n^999) nonsense.</li>
-        <li>Interviews feel less like torture.</li>
-      </ul>
-
-      <p>Even if you don’t use DSA daily, the thinking skill you get from it is priceless. It's like learning how to fight even if you’re not planning to masuk UFC.</p>
-    `,
-  },
-  {
-    id: 3,
-    title: 'OOP, SOLID, and Clean Code (The survival guide)',
-    date: 'Dec 11, 2025',
-    tags: ['oop', 'solid', 'clean-code'],
-    excerpt: 'OOP, SOLID, and clean code explained in the simplest, non-boring way possible.',
-    content: `
-      <p><strong>OOP in simple words</strong></p>
-      <p>OOP is just a fancy way of organizing code so you don’t cry when maintaining it later.</p>
-
-      <ul>
-        <li><strong>Encapsulation:</strong> Hide the mess inside, show only what people need.</li>
-        <li><strong>Abstraction:</strong> Give the user the simple version, keep the complicated stuff behind the curtain.</li>
-        <li><strong>Inheritance:</strong> Reuse code without ctrl+c ctrl+v like a savage.</li>
-        <li><strong>Polymorphism:</strong> Same function name, different behavior. Basically, code cosplay.</li>
-      </ul>
-
-      <h3>The 5 SOLID Principles (translated to human language)</h3>
-      <ul>
-        <li><strong>S:</strong> One job only. Don’t make a class that does everything from logging to making coffee.</li>
-        <li><strong>O:</strong> Add new features without breaking old ones. Simple.</li>
-        <li><strong>L:</strong> Subclasses shouldn’t behave like weird stepchildren.</li>
-        <li><strong>I:</strong> Don’t force classes to implement functions they don’t need.</li>
-        <li><strong>D:</strong> Depend on interfaces, not concrete things. More flexibility, fewer regrets.</li>
-      </ul>
-
-      <h3>Clean Code Basics</h3>
-      <ul>
-        <li>Write code like someone else will read it. Because they will.</li>
-        <li>Short functions. Not novels.</li>
-        <li>Good names. No more <code>data2</code> or <code>xFinalFinalV3</code>.</li>
-        <li>Refactor a bit every time so future-you doesn’t hate past-you.</li>
-      </ul>
-
-      <p>Writing clean code won’t make you a genius overnight, but it will make your life way easier. And your teammates won’t complain about your code. Maybe.</p>
-    `,
-  },
+    title: 'Why I Still Study ABAP While Pursuing Web Dev, AI/ML, and General SWE',
+    date: 'Dec 18, 2025',
+    tags: ['abap', 'sap', 'career', 'webdev'],
+    excerpt: 'ABAP pays 1.5x more than general SWE roles with way less competition. So yeah, I chose money over passion. Here\'s why I\'m still debugging German SQL instead of building cool AI projects.',
+    content: {
+  "content": "If you asked me why I still study ABAP, I'll be honest: it's mostly about money and competition.\n\nWhen I first started studying software engineering and applying for jobs, I got zero offers. As someone from a math background without a solid portfolio, I only knew basic frontend and had finished some machine learning courses. I couldn't build anything valuable on my own—I was only strong theoretically in math.\n\nThen I got an offer as a developer. I was excited and happy, but it wasn't in the language I expected. I wouldn't have minded PHP, Laravel, or Java—but it was ABAP. This was my first introduction to the language, and honestly, the syntax is terrible. It's basically German SQL.\n\nWhat is ABAP?\n\nABAP is essentially a backend programming language for SAP—a proprietary language similar to how COBOL was used historically or how Java dominates enterprise development. But ABAP is specifically for SAP enterprise systems, meaning nearly every multinational corporation either has their own ABAP developers or outsources the work.\n\nClassic ABAP involves working with selection screens, Dynpro, ALV, function modules, and Smartforms—where you're literally changing databases directly. Most old-school developers use SAP GUI, an app that lets them modify the system directly.\n\nOf course, where there's a backend, there's a frontend. SAP's frontend is powered by UI5, a JavaScript framework built on TREE and GraphQL libraries. It's almost funny—every big tech company has already moved on from GraphQL, and now SAP suddenly wants in. But as embarrassing as that seems, it shows SAP is trying to catch up with modern tech infrastructure. That's why ABAP is evolving into a web-based language using modern IDEs. Today's ABAP uses RAP, CDS, and RESTful APIs instead of transaction codes (tcodes) or direct database changes.\n\nSo Why Do I Stick With It?\n\nNow back to the main point: why is money the main reason? Do I have no passion for SAP?\n\nI am interested in SAP infrastructure, but let's be real—AI/ML and web development are more exciting. I want to build things on my own, not spend my life maintaining legacy code or creating enterprise programs. If ABAP developers earned less than general software engineers, I wouldn't hesitate to pivot.\n\nBut here's the thing: ABAP developers earn about 1.5x more than general developers, with significantly less competition. SAP also recently open-sourced some of their repositories after what feels like a century, which opens up opportunities for me to contribute.\n\nThe Bottom Line\n\nIn the end, I do ABAP for the money and the mental challenge. It's mind-blowingly difficult to debug—imagine a massive codebase written in German syntax where you have to go through it line by line without understanding what's actually in the code.\n\nI have a family and a partner I want to take care of. So even though I love studying math and coding, if there's an opportunity to make more money, I'm going to take it. That's just the reality."
+}
+  }
 ];
