@@ -5,8 +5,7 @@ export const blogPosts = [
     title: 'Why I Still Decide To Study ABAP',
     date: 'Dec 18, 2025',
     tags: ['abap', 'sap', 'career'],
-    excerpt:
-      'ABAP pays 1.5x more than general SWE roles with way less competition. So yeah, I chose money over passion.',
+    excerpt: "It's for the money. That's it.",
 
     // Rich content blocks array for mixed media
     content: [
@@ -29,7 +28,7 @@ Then I got an offer as a developer. I was excited and happy, but it wasn't in th
       },
       {
         type: 'image',
-        src: './assets/blog/abap-syntax.png', // example
+        src: 'https://user-images.githubusercontent.com/5097067/60347073-d2bcca00-99bc-11e9-8f2f-ddbe9310b9b4.png', // example
         alt: 'ABAP syntax example',
         caption: 'Yes, this is real ABAP code 💀',
       },
@@ -60,11 +59,10 @@ I am interested in SAP infrastructure, but let's be real—AI/ML and web develop
         type: 'quote',
         content:
           "If ABAP developers earned less than general software engineers, I wouldn't hesitate to pivot.",
-        author: 'Me, being brutally honest',
       },
       {
         type: 'text',
-        content: `But here's the thing: ABAP developers earn about 1.5x more than general developers, with significantly less competition.`,
+        content: `But here's the thing: ABAP developers earn about 1.5x more than general developers, with significantly less competition. Who in their right mind won't go for it.`,
       },
       {
         type: 'stats',
