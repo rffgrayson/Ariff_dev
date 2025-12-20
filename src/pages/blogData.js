@@ -87,36 +87,6 @@ I have a family and a partner I want to take care of. So even though I love stud
       },
     ],
   },
-  {
-    id: 2,
-    title: 'Building This Portfolio Site',
-    date: 'Dec 19, 2025',
-    tags: ['web-dev', 'javascript'],
-    excerpt:
-      'How I built this retro terminal-themed portfolio with vanilla JS and way too much CSS.',
-    content: [
-      {
-        type: 'text',
-        content: 'I wanted something different from the usual portfolio sites...',
-      },
-      {
-        type: 'code',
-        language: 'javascript',
-        content: `// Example of the routing system
-function navigateTo(page) {
-  const route = routes[page] || routes['home'];
-  app.innerHTML = route.render();
-  route.init?.();
-}`,
-      },
-      {
-        type: 'embed',
-        platform: 'youtube',
-        id: 'dQw4w9WgXcQ',
-        caption: 'Inspiration for the design',
-      },
-    ],
-  },
 ];
 
 // Helper to get all unique tags
