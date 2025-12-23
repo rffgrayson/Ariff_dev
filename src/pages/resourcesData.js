@@ -92,8 +92,8 @@ export const resourcesData = {
       startDate: '2025-11-10',
       lastUpdated: 'current',
       progress: {
-        label: 'Analyzing and Testing Code',
-        percentage: 8,
+        label: 'Processing Character Fields',
+        percentage: 18,
       },
     },
   ],
