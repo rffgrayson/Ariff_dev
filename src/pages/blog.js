@@ -1,10 +1,22 @@
 import { blogPosts, getAllTags } from './blogData.js';
 
+// Helper function to convert URLs to clickable links
+function linkifyText(text) {
+  // Match URLs (http, https, and www)
+  const urlRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)/g;
+  return text.replace(urlRegex, (url) => {
+    const href = url.startsWith('www.') ? `https://${url}` : url;
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+  });
+}
+
 // Render individual content blocks based on type
 function renderContentBlock(block) {
   switch (block.type) {
-    case 'text':
-      return `<p class="blog-text">${block.content.replace(/\n\n/g, '</p><p class="blog-text">')}</p>`;
+    case 'text': {
+      const textContent = linkifyText(block.content);
+      return `<p class="blog-text">${textContent.replace(/\n\n/g, '</p><p class="blog-text">')}</p>`;
+    }
 
     case 'heading':
       return `<h${block.level} class="blog-heading">${block.content}</h${block.level}>`;
@@ -25,12 +37,14 @@ function renderContentBlock(block) {
         </blockquote>
       `;
 
-    case 'callout':
+    case 'callout': {
+      const calloutContent = linkifyText(block.content);
       return `
         <div class="blog-callout callout-${block.style || 'info'}">
-          ${block.content}
+          ${calloutContent}
         </div>
       `;
+    }
 
     case 'code':
       return `
