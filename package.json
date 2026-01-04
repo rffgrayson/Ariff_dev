@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "template-repo for any development purpose",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.prod.js",
@@ -27,7 +28,10 @@
   },
   "homepage": "https://github.com/rffgrayson/Ariff_dev#readme",
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
     "@eslint/js": "^9.39.1",
+    "babel-loader": "^10.0.0",
     "css-loader": "^7.1.2",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^9.1.2",
@@ -56,7 +60,6 @@
     ],
     "*.{json,md,yml,yaml,css,scss}": [
       "prettier --write"
-    ],
-    "**/*": "prettier --write --ignore-unknown"
+    ]
   }
 }

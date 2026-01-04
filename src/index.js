@@ -83,6 +83,9 @@ const audio = document.getElementById('bgMusic');
 const toggle = document.getElementById('musicToggle');
 let isPlaying = false;
 
+// Lower the volume immediately
+audio.volume = 0.2; 
+
 toggle.addEventListener('click', () => {
   if (isPlaying) {
     audio.pause();
